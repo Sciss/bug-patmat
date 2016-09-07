@@ -12,7 +12,11 @@ trait Match {
       UGB.Input.Buffer.Value(1L, 2, async = false)
 
     case i: UGB.Input.AttrValue =>
-      UGB.Input.AttrValue.Value(None)
+      val opt: Option[Any] = ???
+      val res = opt.collect {
+        case i: Int => math.sqrt(i)
+      }
+      UGB.Input.AttrValue.Value(res)
 
     case i: UGB.Input.BufferOut => UGB.Unit
     case    UGB.Input.StopSelf  => UGB.Unit
